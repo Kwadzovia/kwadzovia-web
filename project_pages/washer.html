@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Washer</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="../assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <h1>Washing Machine Simulator</h1>
+        <p>First Pandemic Project</p>
+        <a href="../index.html#projects" class="button">Back to Projects</a>
+      </header>
+
+      <!-- Main -->
+      <div id="main">
+        <!-- Content -->
+        <section id="content" class="main">
+          <span class="image main"
+            ><img src="../images/washHeader.jpg" alt=""
+          /></span>
+          <h2>Project Overview</h2>
+          <p>
+            This is one of my favourite projects. It was for an embedded systems
+            course, where we were given multiple different project options. My
+            partner and I chose to work with the washing machine because it was
+            an interesting mix of electronic hardware and firmware, all with an
+            external interface. The brain of the operation was a TM4C123GH6PM
+            MCU, which interfaced with the hardware using a ribbon cable.
+          </p>
+
+          <p>
+            This project began at the very start of COVID-19, meaning that we
+            quickly learned that we would not be able to work on it together in
+            person. We decided that my partner would keep the board, and handle
+            the hardware. We frequently met up remotely to discuss hardware
+            debugging and board-bringup. It was the first time that I had
+            written code for an embedded system that I could not test in person,
+            which was fairly challenging.
+          </p>
+          <!-- <p>Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Consequat leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit enim turpis lorem ipsum dolor sit amet feugiat. Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet est velit quis lorem.</p> -->
+          <!-- <h2>Tempus veroeros</h2>
+								<p>Cep risus aliquam gravida cep ut lacus amet. Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae ante vestibulum ante. Blandit. Ante accumsan nisi eu placerat gravida placerat adipiscing in risus fusce vitae ac mi accumsan nunc in accumsan tempor blandit aliquet aliquet lobortis. Ultricies blandit lobortis praesent turpis. Adipiscing accumsan adipiscing adipiscing ac lacinia cep. Orci blandit a iaculis adipiscing ac. Vivamus ornare laoreet odio vis praesent nunc lorem mi. Erat. Tempus sem faucibus ac id. Vis in blandit. Nascetur ultricies blandit ac. Arcu aliquam. Accumsan mi eget adipiscing nulla. Non vestibulum ac interdum condimentum semper commodo massa arcu.</p> -->
+
+          <h3>System Information</h3>
+          <p>
+            <span class="image left"
+              ><img src="../images/washer_board.jpg" alt=""
+            /></span>
+            The board itself was a washing machine simulator made by Bytronic.
+            There was no internal logic, but it thankfully contained all the
+            necessary Motor driver, Latch, and switch circuitry. One of the most
+            difficult parts of the bringup procedure was determining which pins
+            to connect between the header and the microcontroller since the
+            documentation was extremely vague on what pin number controlled what
+            part of the board. It took a bit of trial and error but eventually,
+            a pin pattern was found.
+          </p>
+          The washing machine behaviour was relatively well defined before we
+          started. Six different wash cycles could be selected using the button
+          to LED interface: Whites, Colours, Mixed, Economy, Delicates, and
+          Heavy Load. Each mode would require a different temperature, wash
+          speed, and time. This was described in detail in our documentation.
+          There were 10 checkpoints that each option would go through: Fill,
+          Heat, Wash, Empty, Fill, Rinse, Empty, Spin, Dry, Complete. Lastly,
+          the buzzer would sound whenever the door was opened during the cycle
+          using interrupts.
+
+          <p>
+            <span class="image right"
+              ><img src="../images/washer_pinout.png" alt=""
+            /></span>
+            We used excel to determine which pins would be used for each
+            peripheral on our microcontroller. There were switches, motors and
+            encoders, 7-segments, and three different colour LEDs. We handled
+            timers in software using the MCU peripherals.
+          </p>
+
+          <p>
+            This was probably my favourite project in my program. It was the
+            first time I developed firmware for a system this complex, and it
+            went extremely well considering the setbacks we faced at the start
+            of the pandemic. If you're up for it, there's a fully documented
+            report on the setup on my Github Page.
+          </p>
+
+          <p>
+            <strong
+              >Unfortunately, the audio in the footage I have was corrupted, but
+              the functionality is explained in the previous sections.</strong
+            >
+          </p>
+        </section>
+
+        <div class="showcase-vid">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/Zhbf6Sf9VsE?start=58"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <!-- <footer id="footer">
+						<section>
+							<h2>Go Back?</h2>
+							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+							<ul class="actions">
+								<li><a href="landing.html" class="button">Back to Projects</a></li>
+							</ul>
+						</section>
+						<section>
+							<h2>Etiam feugiat</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
+								<dt>Phone</dt>
+								<dd>(000) 000-0000 x 0000</dd>
+								<dt>Email</dt>
+								<dd><a href="#">information@untitled.tld</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer> -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

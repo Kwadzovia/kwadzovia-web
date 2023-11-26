@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>STM32 Breakout Board</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="../assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <h1>STM32 Breakout Board + UART Console</h1>
+        <a href="../index.html#projects" class="button">Back to Projects</a>
+      </header>
+
+      <!-- Main -->
+      <div id="main">
+        <!-- Content -->
+        <section id="content" class="main">
+          <span class="image main"
+            ><img src="../assets/stpcb.png" alt=""
+          /></span>
+          <h2>Overview</h2>
+          <p>
+            In this project, I wrote a simple UART console that responds to
+            keyboard inputs to control an LED and its blink speed. A
+            demonstration of the firmware is at the bottom of the page.
+          </p>
+
+          <p>
+            The banner picture at the top of the page is the schematic I made
+            for the STM32F070F6P6TR.
+          </p>
+
+          <p>
+            The design took two revisions to build. the first design was nearly
+            impossible to solder by hand due to the combination of 0402
+            components and overcrowding. It also used usb-c which
+            overcomplicated the layout and tolerances.
+          </p>
+
+          <p>
+            The second revision used micro usb and 0805 components so I
+            wouldnt’t go crazy. I used copper pours for the components at the
+            input and output of the voltage regulator, but I would remove this
+            if given the chance. The pours were acting as a heatsink, causing
+            extra difficulty with soldering and tombstoning. Thermal reliefs
+            would have helped.
+          </p>
+          <p>
+            After soldering, I plugged in the usb... and nothing. Some debugging
+            showed that the voltage coming into the regulator was 5V and coming
+            out as 300 mV. It turns out I made a mistake in the regulator
+            circuit. From the Datasheet:
+          </p>
+          <span class="image fit"
+            ><img src="../assets/reg_circuit.png" alt=""
+          /></span>
+
+          <p>
+            <strong>Incorrect original design.</strong>
+          </p>
+          <span class="image fit"
+            ><img src="../assets/incorrect_circ.png" alt=""
+          /></span>
+          <p>
+            <strong>Corrected Circuit:</strong>
+          </p>
+          <span class="image fit"
+            ><img src="../assets/correct_circ.png" alt=""
+          /></span>
+
+          <p>
+            The circuit bug is unfortunate, but the header pins each have a
+            direct connection to the power rail so the regulator can be
+            bypassed. (no more plugging in via usb). After bypassing the usb
+            power with alligator clips, the power LED turned on.
+          </p>
+
+          <p>
+            After uploading a simply blinky program through the SWD pins, I
+            started testing the UART with the code. The UART worked properly,
+            but while setting up to record, I decided to power the board from
+            the 3V3-USB-TTL cable I was using for the UART. Turns out only the
+            logic is 3.3V and the power comes straight from the usb port as 5V,
+            which fried both my board and my programmer…
+          </p>
+
+          <p>
+            Between the two board revisions, circuit issues, and blowing up the
+            board in the end, this project was a little frustrating, but it was
+            nice to at least know why each problem happened. Also the code still
+            worked on the pcb (You just had to be there).
+          </p>
+        </section>
+
+        <div class="showcase-vid">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/watch?v=MMIUb_UcHMk"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <!-- <footer id="footer">
+						<section>
+							<h2>Go Back?</h2>
+							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+							<ul class="actions">
+								<li><a href="index.html" class="button">Back to Projects</a></li>
+							</ul>
+						</section>
+						<section>
+							<h2>Etiam feugiat</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
+								<dt>Phone</dt>
+								<dd>(000) 000-0000 x 0000</dd>
+								<dt>Email</dt>
+								<dd><a href="#">information@untitled.tld</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer> -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

@@ -192,6 +192,10 @@ section {
   margin-bottom: 1dvi;
 }
 
+.accent {
+  color: rgb(128, 79, 149);
+}
+
 .title {
   font-size: 3rem;
   text-align: center;
@@ -224,6 +228,11 @@ section {
   padding: 1rem;
   width: 8rem;
   border-radius: 2rem;
+}
+
+.btn-disabled {
+  opacity: 0%;
+  cursor: default;
 }
 
 .btn-color-1,
