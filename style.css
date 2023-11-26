@@ -279,6 +279,10 @@ section {
   display: flex;
 }
 
+.text-container {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
 .about-pic {
   border-radius: 2rem;
 }
@@ -290,7 +294,19 @@ section {
 }
 
 .details-container {
+  padding: 0.5rem;
+  /* padding-right: 5%; */
+  flex: 1;
+  background: white;
+  border-radius: 2rem;
+  border: rgb(53, 53, 53) 0.1rem solid;
+  border-color: rgb(163, 163, 163);
+  text-align: center;
+}
+
+.details-container-exp {
   padding: 1.5rem;
+  padding-right: 5%;
   flex: 1;
   background: white;
   border-radius: 2rem;
@@ -327,7 +343,7 @@ section {
 .experience-sub-title {
   color: rgb(85, 85, 85);
   font-weight: 600;
-  font-size: 1.75rem;
+  font-size: 1.35rem;
   margin-bottom: 2rem;
 }
 
@@ -361,8 +377,16 @@ article .icon {
 
 #projects {
   position: relative;
+  height: 160vh;
 }
 
+.proj-containers {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  box-sizing: content-box;
+}
 .color-container {
   color: rgb(163, 163, 163);
   background: rgb(250, 250, 250);
@@ -420,10 +444,11 @@ article .icon {
 }
 
 .contact-icon {
-  cursor: default;
   height: 7rem;
+  cursor: pointer;
 }
 
 .email-icon {
   height: 8.5rem;
+  cursor: default;
 }
