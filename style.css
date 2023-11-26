@@ -16,6 +16,7 @@ html {
 }
 
 p {
+  font-size: 1.3rem;
   color: rgb(85, 85, 85);
 }
 
@@ -277,6 +278,7 @@ section {
 .about-containers,
 .about-details-container {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .about-pic {
@@ -361,6 +363,7 @@ article .icon {
 
 #projects {
   position: relative;
+  height: 180vh;
 }
 
 .color-container {
@@ -370,11 +373,12 @@ article .icon {
 
 .project-img {
   border-radius: 2rem;
-  width: 90%;
-  height: 90%;
+  width: 25rem;
+  height: 25rem;
 }
 
 .project-title {
+  font-size: 1.4rem;
   margin: 1rem;
   color: black;
 }
@@ -420,10 +424,10 @@ article .icon {
 }
 
 .contact-icon {
-  cursor: default;
   height: 7rem;
 }
 
 .email-icon {
   height: 8.5rem;
+  cursor: default;
 }
